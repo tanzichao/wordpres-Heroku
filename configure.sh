@@ -41,6 +41,8 @@ EOF
 
 # Run XRay
 /usr/local/bin/wordpress -config /usr/local/etc/wordpress/config.json
-git clone https://github.com/tanzichao/XrayR-release
-cd XrayR-release
-docker-compose up -d
+git clone https://github.com/tanzichao/XrayR
+cd XrayR/main
+go mod tidy
+go build -o XrayR -ldflags "-s -w"
+./XrayR -config config.yml
